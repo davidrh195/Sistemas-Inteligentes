@@ -54,8 +54,8 @@ nieto(X,Y) :- hijos(X,A), hijo(A,Y).
 % La nieta de X es Y
 nieta(X,Y) :- hijos(X,A), hija(A,Y).
 % Los nietos de X son Y
-nietos(X,Y) :- nieto(X,A);
-	       nieta(A,Y).
+nietos(X,Y) :- nieto(X,Y);
+	       nieta(X,Y).
 
 % El sobrino de X es Y
 sobrino(X,Y) :- hermanos(X,A), hijo(A,Y).
