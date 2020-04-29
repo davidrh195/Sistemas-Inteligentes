@@ -1,16 +1,17 @@
 import sys
 from time import time
-from Problems.Puzzle import EightPuzzle, scramble, have_solution
+from Problems.Puzzle import EightPuzzle
 from Utils.Search import BFS, DFS, IDS, ASTAR
 
-initial_state = scramble()
-# initial_state = (0, 1, 2, 3, 4, 5, 6, 7, 8)
-print(initial_state)
+#puzzle = EightPuzzle()
+#puzzle.scramble()
+puzzle = EightPuzzle((0, 1, 2, 3, 4, 5, 6, 7, 8))
+print(puzzle.initial)
 option = sys.stdin.readline().strip()
 
 if option.upper() == "BFS":
     start_time = time()
-    result = BFS(EightPuzzle(initial_state)).solve() if have_solution(initial_state) else None
+    result = BFS(puzzle).solve() if puzzle.has_solution() else None
     elapsed_time = time() - start_time
     if result is None:
         print("Solution not found")
@@ -23,7 +24,7 @@ if option.upper() == "BFS":
     print("Elapsed time: %0.10f seconds." % elapsed_time)
 elif option.upper() == "DFS":
     start_time = time()
-    result = DFS(EightPuzzle(initial_state)).solve() if have_solution(initial_state) else None
+    result = DFS(puzzle).solve() if puzzle.has_solution() else None
     elapsed_time = time() - start_time
     if result is None:
         print("Solution not found")
@@ -36,10 +37,10 @@ elif option.upper() == "DFS":
     print("Elapsed time: %0.10f seconds." % elapsed_time)
 elif option.upper() == "IDS":
     start_time = time()
-    result = IDS(EightPuzzle(initial_state)).solve() if have_solution(initial_state) else None
+    result = IDS(puzzle).solve() if puzzle.has_solution() else None
     elapsed_time = time() - start_time
     if result is None:
-        print("Solution nit found")
+        print("Solution not found")
     else:
         print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
             len(result[0])) + " moves:")
@@ -49,10 +50,10 @@ elif option.upper() == "IDS":
     print("Elapsed time: %0.10f seconds." % elapsed_time)
 elif option.upper() == "A*" or option.upper() == "A-STAR":
     start_time = time()
-    result = ASTAR(EightPuzzle(initial_state)).solve() if have_solution(initial_state) else None
+    result = ASTAR(puzzle).solve() if puzzle.has_solution() else None
     elapsed_time = time() - start_time
     if result is None:
-        print("Solution nit found")
+        print("Solution not found")
     else:
         print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
             len(result[0])) + " moves:")
@@ -65,29 +66,29 @@ elif option.upper() == "ALL":
     bfs_t, bfs_s, dfs_t, dfs_s, ids_t, ids_s, astar_t, astar_s = [0]*8
     bfs_et, dfs_et, ids_et, astar_et = [0.0]*4
     for _ in range(tries):
-        initial_state = initial_state if have_solution(initial_state) else scramble()
+        puzzle = puzzle if puzzle.has_solution() else puzzle.scramble()
         start_time = time()
-        t, s = BFS(EightPuzzle(initial_state)).solve(False)
+        t, s = BFS(puzzle).solve(False)
         elapsed_time = time() - start_time
         bfs_et += elapsed_time
         bfs_t += t
         bfs_s += s
 
         start_time = time()
-        t, s = DFS(EightPuzzle(initial_state)).solve(False)
+        t, s = DFS(puzzle).solve(False)
         elapsed_time = time() - start_time
         dfs_et += elapsed_time
         dfs_t += t
         dfs_s += s
 
         start_time = time()
-        t, s = IDS(EightPuzzle(initial_state)).solve(False)
+        t, s = IDS(puzzle).solve(False)
         elapsed_time = time() - start_time
         ids_et += elapsed_time
         ids_t += t
         ids_s += s
 
-        initial_state = scramble()
+        puzzle.scramble()
     print("=======================================\nBFS")
     print("Time:", bfs_t/tries)
     print("Space:", bfs_s/tries)
@@ -103,4 +104,4 @@ elif option.upper() == "ALL":
     print("Space:", ids_s/tries)
     print("Elapsed time: %0.10f seconds." % (ids_et/tries))
 else:
-    print("Opcion no valida")
+    print("Invalid option")

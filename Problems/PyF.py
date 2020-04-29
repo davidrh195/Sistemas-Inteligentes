@@ -47,7 +47,9 @@ class Agent:
                 nPicas = nPicas+1 if k != i else nPicas
         return not (nPicas == picas and nFijas == fijas)
 
-    """ 
+    """ This method will act as the Agent sensors, the sensors receive a perception from the Environment and return the
+        respective action. In this case the perception could be the word START or the number od "Picas" and "Fijas" of
+        the previous guess.
     """
     def sensors(self, perception):
         if perception == "START":
@@ -56,6 +58,8 @@ class Agent:
         else:
             if int(perception[1]) == 4:
                 return "STOP"
+            # If the previous guess is not the answer(the number of "Fijas" is not 4), the list of possible answers
+            # will be decreased on base of the number of "Picas" and "Fijas" and then will be choose the next guess
             self.decrease(int(perception[0]), int(perception[1]))
             if len(self.ans) == 0:
                 return "TRAP"
@@ -65,22 +69,31 @@ class Agent:
 
 class Environment:
     def __init__(self, agent):
-        self.turn = 0
+        self.tried = 0
         self.agent = agent
 
+    """ The game starts with sending a perception to the agent, witch is responsible to returning the respective action.
+        This process continues until the agent return a "STOP"(if it was capable to find the answer), or "TRAP"(if there
+        was some cheating)
+    """
     def start(self):
         action = self.agent.sensors(self.perception())
         while action != "STOP" and action != "TRAP":
-            print("Turn:", self.turn)
+            print("Turn:", self.tried)
             print(action)
             action = self.agent.sensors(self.perception())
         print("\nYOU CHEATED" if action == "TRAP" else "\nGOOD GAME")
 
+    """ This method will be the environment perceptions, the environment has a variable that counts the number of tries
+        of the Agent, when this variable is 0, that means that the is not started yet so the environment says to the
+        agent "START", and when the game is already started, the environment asks to the user the number of "Picas" and
+        "Fijas" of the guess to send them to the agent.
+    """
     def perception(self):
-        if self.turn == 0:
-            self.turn += 1
+        if self.tried == 0:
+            self.tried += 1
             return "START"
         else:
-            self.turn += 1
+            self.tried += 1
             print("P", "F")
             return sys.stdin.readline().strip().split(" ")

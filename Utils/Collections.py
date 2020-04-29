@@ -3,7 +3,6 @@ import heapq
 
 
 class Node:
-
     def __init__(self, state, parent=None, prevAcc=None, path_cost=1):
         self.state = state
         self.parent = parent
@@ -24,7 +23,6 @@ class Node:
 
 
 class Queue(deque):
-
     def isEmpty(self):
         return len(self) == 0
 
@@ -42,7 +40,6 @@ class Queue(deque):
 
 
 class Stack(deque):
-
     def isEmpty(self):
         return len(self) == 0
 
@@ -60,7 +57,6 @@ class Stack(deque):
 
 
 class PriorityQueue:
-
     def __init__(self, order='min', f=lambda x: x):
         self.heap = []
         if order == 'min':

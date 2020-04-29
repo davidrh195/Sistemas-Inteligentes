@@ -122,8 +122,8 @@ class IDS:
         self.problem = problem
 
     def solve(self, full=True):
-        for l in range(sys.maxsize):
-            ans = DFS(self.problem, l).solve(full)
+        for limit in range(sys.maxsize):
+            ans = DFS(self.problem, limit).solve(full)
             if ans is not None:
                 return ans
         return None
