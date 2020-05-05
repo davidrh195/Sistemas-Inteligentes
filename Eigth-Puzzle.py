@@ -1,107 +1,146 @@
-import sys
+import sys, pandas as pd, numpy as np
 from time import time
 from Problems.Puzzle import EightPuzzle
 from Utils.Search import BFS, DFS, IDS, ASTAR
 
-#puzzle = EightPuzzle()
-#puzzle.scramble()
-puzzle = EightPuzzle((0, 1, 2, 3, 4, 5, 6, 7, 8))
-print(puzzle.initial)
-option = sys.stdin.readline().strip()
+print("What kind of searches do you want to apply:")
+option = sys.stdin.readline().strip().split(" ")
+puzzle = EightPuzzle()
+# puzzle = EightPuzzle((0, 1, 2, 3, 4, 5, 6, 7, 8))
 
-if option.upper() == "BFS":
-    start_time = time()
-    result = BFS(puzzle).solve() if puzzle.has_solution() else None
-    elapsed_time = time() - start_time
-    if result is None:
-        print("Solution not found")
-    else:
-        print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-            len(result[0])) + " moves:")
-        print(list(result[0]), "\n")
-        print("Time:", result[1], "nodes")
-        print("Space:", result[2], "nodes")
-    print("Elapsed time: %0.10f seconds." % elapsed_time)
-elif option.upper() == "DFS":
-    start_time = time()
-    result = DFS(puzzle).solve() if puzzle.has_solution() else None
-    elapsed_time = time() - start_time
-    if result is None:
-        print("Solution not found")
-    else:
-        print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-            len(result[0])) + " moves:")
-        print(list(result[0]), "\n")
-        print("Time:", result[1], "nodes")
-        print("Space:", result[2], "nodes")
-    print("Elapsed time: %0.10f seconds." % elapsed_time)
-elif option.upper() == "IDS":
-    start_time = time()
-    result = IDS(puzzle).solve() if puzzle.has_solution() else None
-    elapsed_time = time() - start_time
-    if result is None:
-        print("Solution not found")
-    else:
-        print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-            len(result[0])) + " moves:")
-        print(list(result[0]), "\n")
-        print("Time:", result[1], "nodes")
-        print("Space:", result[2], "nodes")
-    print("Elapsed time: %0.10f seconds." % elapsed_time)
-elif option.upper() == "A*" or option.upper() == "A-STAR":
-    start_time = time()
-    result = ASTAR(puzzle).solve() if puzzle.has_solution() else None
-    elapsed_time = time() - start_time
-    if result is None:
-        print("Solution not found")
-    else:
-        print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-            len(result[0])) + " moves:")
-        print(list(result[0]), "\n")
-        print("Time:", result[1], "nodes")
-        print("Space:", result[2], "nodes")
-    print("Elapsed time: %0.10f seconds." % elapsed_time)
-elif option.upper() == "ALL":
-    tries = 20
-    bfs_t, bfs_s, dfs_t, dfs_s, ids_t, ids_s, astar_t, astar_s = [0]*8
-    bfs_et, dfs_et, ids_et, astar_et = [0.0]*4
-    for _ in range(tries):
-        puzzle = puzzle if puzzle.has_solution() else puzzle.scramble()
+if len(option) == 1:
+    puzzle.scramble(14)
+    print("Initial state:\n", puzzle.initial)
+    if option[0].upper() == "BFS":
         start_time = time()
-        t, s = BFS(puzzle).solve(False)
+        result = BFS(puzzle).solve() if puzzle.has_solution() else None
         elapsed_time = time() - start_time
-        bfs_et += elapsed_time
-        bfs_t += t
-        bfs_s += s
-
+        if result is None:
+            print("Solution not found")
+        else:
+            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                len(result[0])) + " moves:")
+            print(list(result[0]), "\n")
+            d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
+            print(d, "\n")
+        print("Elapsed time: %0.10f seconds." % elapsed_time)
+    elif option[0].upper() == "DFS":
         start_time = time()
-        t, s = DFS(puzzle).solve(False)
+        result = DFS(puzzle).solve() if puzzle.has_solution() else None
         elapsed_time = time() - start_time
-        dfs_et += elapsed_time
-        dfs_t += t
-        dfs_s += s
-
+        if result is None:
+            print("Solution not found")
+        else:
+            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                len(result[0])) + " moves:")
+            print(list(result[0]), "\n")
+            d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
+            print(d, "\n")
+        print("Elapsed time: %0.10f seconds." % elapsed_time)
+    elif option[0].upper() == "IDS":
         start_time = time()
-        t, s = IDS(puzzle).solve(False)
+        result = IDS(puzzle).solve() if puzzle.has_solution() else None
         elapsed_time = time() - start_time
-        ids_et += elapsed_time
-        ids_t += t
-        ids_s += s
+        if result is None:
+            print("Solution not found")
+        else:
+            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                len(result[0])) + " moves:")
+            print(list(result[0]), "\n")
+            d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
+            print(d, "\n")
+        print("Elapsed time: %0.10f seconds." % elapsed_time)
+    elif option[0].upper() == "A*":
+        print("Misplace Tiles")
+        puzzle.setHeuristic("misplace")
+        start_time = time()
+        result = ASTAR(puzzle).solve() if puzzle.has_solution() else None
+        elapsed_time = time() - start_time
+        if result is None:
+            print("Solution not found")
+        else:
+            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                len(result[0])) + " moves:")
+            print(list(result[0]), "\n")
+            d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
+            print(d, "\n")
+        print("Elapsed time: %0.10f seconds." % elapsed_time)
 
-        puzzle.scramble()
-    print("=======================================\nBFS")
-    print("Time:", bfs_t/tries)
-    print("Space:", bfs_s/tries)
-    print("Elapsed time: %0.10f seconds." % (bfs_et/tries))
-
-    print("=======================================\nDFS")
-    print("Time:", dfs_t/tries)
-    print("Space:", dfs_s/tries)
-    print("Elapsed time: %0.10f seconds." % (dfs_et/tries))
-
-    print("=======================================\nIDS")
-    print("Time:", ids_t/tries)
-    print("Space:", ids_s/tries)
-    print("Elapsed time: %0.10f seconds." % (ids_et/tries))
+        print("##############################################")
+        print("Manhattan")
+        puzzle.setHeuristic("manhattan")
+        start_time = time()
+        result = ASTAR(puzzle).solve() if puzzle.has_solution() else None
+        elapsed_time = time() - start_time
+        if result is None:
+            print("Solution not found")
+        else:
+            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                len(result[0])) + " moves:")
+            print(list(result[0]), "\n")
+            d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
+            print(d, "\n")
+        print("Elapsed time: %0.10f seconds." % elapsed_time)
+    else:
+        print("%s search not found" % option[0])
 else:
-    print("Invalid option")
+    aux = []
+    for i in option:
+        if i.upper() == "BFS" or i.upper() == "DFS" or i.upper() == "IDS":
+            aux.append(i)
+        elif i.upper() == "A*":
+            aux.append("A*(Misplaced)")
+            aux.append("A*(Manhattan)")
+        else:
+            print("%s search not found" % option[i])
+    option = aux
+
+    tries = 30
+    time_complex = np.zeros(len(option))
+    space_complex = np.zeros(len(option))
+    average_time = np.zeros(len(option))
+    for _ in range(tries):
+        puzzle.scramble(14)
+        for i in range(len(option)):
+            if option[i].upper() == "BFS":
+                start_time = time()
+                t, s = BFS(puzzle).solve(False)
+                elapsed_time = time() - start_time
+                average_time[i] += elapsed_time
+                time_complex[i] += t
+                space_complex[i] += s
+            elif option[i].upper() == "DFS":
+                start_time = time()
+                t, s = DFS(puzzle).solve(False)
+                elapsed_time = time() - start_time
+                average_time[i] += elapsed_time
+                time_complex[i] += t
+                space_complex[i] += s
+            elif option[i].upper() == "IDS":
+                start_time = time()
+                t, s = IDS(puzzle).solve(False)
+                elapsed_time = time() - start_time
+                average_time[i] += elapsed_time
+                time_complex[i] += t
+                space_complex[i] += s
+            elif option[i] == "A*(Misplaced)":
+                puzzle.setHeuristic("misplace")
+                start_time = time()
+                t, s = ASTAR(puzzle).solve(False)
+                elapsed_time = time() - start_time
+                average_time[i] += elapsed_time
+                time_complex[i] += t
+                space_complex[i] += s
+            elif option[i] == "A*(Manhattan)":
+                puzzle.setHeuristic("manhattan")
+                start_time = time()
+                t, s = ASTAR(puzzle).solve(False)
+                elapsed_time = time() - start_time
+                average_time[i] += elapsed_time
+                time_complex[i] += t
+                space_complex[i] += s
+
+    d = pd.DataFrame({'Search': option, 'Expanded nodes': time_complex//tries,
+                      'Maximum length of the list': space_complex//tries, 'Average time(sec)': average_time/tries})
+    print("Number of tries: %d \n" % tries)
+    print(d)

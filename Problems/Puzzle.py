@@ -13,9 +13,10 @@ class EightPuzzle:
             | 2 |   | 8 |   row of the tile '4' an in column of position '0', will be the number one.
             | 7 | 6 | 5 |
     """
-    def __init__(self, initial=(1, 2, 3, 4, 5, 6, 7, 8, 0)):
+    def __init__(self, initial=(1, 2, 3, 4, 5, 6, 7, 8, 0), h="manhattan"):
         self.goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
         self.initial = initial
+        self.heuristic = h
         # position   0  1  2  3  4  5  6  7  8
         self.mem = [[0, 0, 0, 0, 0, 0, 0, 0, 0],# blank
                     [0, 1, 2, 1, 2, 3, 2, 3, 4],#   1
@@ -27,6 +28,10 @@ class EightPuzzle:
                     [2, 3, 4, 1, 2, 3, 0, 1, 2],#   7
                     [3, 2, 3, 2, 1, 2, 1, 0, 1]]#   8
                                                 # Tiles
+
+    """ Method that replace the default heuristic"""
+    def setHeuristic(self, h):
+        self.heuristic = h
 
     """ Method that returns the index of the blank square of any state. """
     @staticmethod
@@ -74,8 +79,9 @@ class EightPuzzle:
         while moves < mov:
             move = random.choice(self.actions(init))
             init = self.result(init, move)
-            self.initial = init
             moves += 1
+
+        self.initial = init
 
     """ Method that verifies if the initial state is resolvable. """
     def has_solution(self):
@@ -89,7 +95,10 @@ class EightPuzzle:
 
     """ This method has the problem heuristics. """
     def h(self, node):
-        # Misplace tiles
-        # return sum(s != g and s != 0 for (s, g) in zip(node.state, self.goal))
-        # Minimum distance from the actual position of the tile, and the target position
-        return sum(self.mem[node.state[i]][i] for i in range(len(node.state)))
+        if self.heuristic == "manhattan":
+            # Minimum distance from the actual position of the tile, and the target position
+            return sum(self.mem[node.state[i]][i] for i in range(len(node.state)))
+        elif self.heuristic == "misplace":
+            # Misplace tiles
+            return sum(s != g and s != 0 for (s, g) in zip(node.state, self.goal))
+

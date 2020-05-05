@@ -134,7 +134,7 @@ class ASTAR:
         self.problem = problem
         self.space = 0
         self.time = 0
-        self.h = self.problem.h
+        self.h = problem.h
 
     def solve(self, full=True):
         ans = self.search()
