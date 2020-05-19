@@ -17,6 +17,7 @@ class EightPuzzle:
         self.goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
         self.initial = initial
         self.heuristic = h
+        self.opposite_move = {'UP': 'DOWN', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'RIGHT': 'LEFT'}
         # position   0  1  2  3  4  5  6  7  8
         self.mem = [[0, 0, 0, 0, 0, 0, 0, 0, 0],# blank
                     [0, 1, 2, 1, 2, 3, 2, 3, 4],#   1
@@ -75,9 +76,12 @@ class EightPuzzle:
     def scramble(self, mov=30):
         init = (1, 2, 3, 4, 5, 6, 7, 8, 0)
         moves = 0
-
+        previous_move = ''
         while moves < mov:
-            move = random.choice(self.actions(init))
+            possible_actions = self.actions(init)
+            possible_actions.remove(self.opposite_move[previous_move]) if previous_move in possible_actions else None
+            move = random.choice(possible_actions)
+            previous_move = move
             init = self.result(init, move)
             moves += 1
 
@@ -101,4 +105,3 @@ class EightPuzzle:
         elif self.heuristic == "misplace":
             # Misplace tiles
             return sum(s != g and s != 0 for (s, g) in zip(node.state, self.goal))
-

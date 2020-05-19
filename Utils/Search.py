@@ -117,6 +117,16 @@ class DFS:
         return children
 
 
+class DLS:
+    def __init__(self, problem, limit):
+        self.problem = problem
+        self.limit = limit
+
+    def solve(self, full=True):
+        ans = DFS(self.problem, self.limit).solve(full)
+        return ans
+
+
 class IDS:
     def __init__(self, problem):
         self.problem = problem
