@@ -25,8 +25,9 @@ if len(option) == 1:
             print(colored("Solution not found", "red"))
         else:
             print("##############################################")
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -39,8 +40,9 @@ if len(option) == 1:
             print(colored("Solution not found", "red"))
         else:
             print("##############################################")
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -58,8 +60,9 @@ if len(option) == 1:
             print(colored("Solution not found at depth %d, try with a higher limit" % limit, "red"))
         else:
             print("##############################################")
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -72,8 +75,9 @@ if len(option) == 1:
             print(colored("Solution not found", "red"))
         else:
             print("##############################################")
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -88,8 +92,9 @@ if len(option) == 1:
         if result is None:
             print(colored("Solution not found", "red"))
         else:
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -104,8 +109,9 @@ if len(option) == 1:
         if result is None:
             print(colored("Solution not found", "red"))
         else:
-            print("You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
-                len(result[0])) + " moves:")
+            print(
+                "You have to do " + str(len(result[0])) + " move:" if len(result[0]) == 1 else "You have to do " + str(
+                    len(result[0])) + " moves:")
             print(list(result[0]), "\n")
             d = pd.DataFrame({'Expanded nodes': [result[1]], 'Maximum length of the list': [result[2]]})
             print(d, "\n")
@@ -117,6 +123,12 @@ else:
     for i in option:
         if i.upper() == "BFS" or i.upper() == "DFS" or i.upper() == "IDS":
             aux.append(i)
+        elif i.upper().find("DLS") == 0:
+            new_option = i.upper().split("-")
+            if len(new_option) < 2:
+                print(colored("For DLS no limit parameter was found", "red"))
+            else:
+                aux.append(i)
         elif i.upper() == "A*":
             aux.append("A*(Misplaced)")
             aux.append("A*(Manhattan)")
@@ -127,49 +139,83 @@ else:
     tries = 30
     time_complex = np.zeros(len(option))
     space_complex = np.zeros(len(option))
-    average_time = np.zeros(len(option))
+    av_time = np.zeros(len(option))
+    num_of_solution_not_found = np.zeros(len(option))
     for _ in range(tries):
         puzzle.scramble(14)
         for i in range(len(option)):
             if option[i].upper() == "BFS":
                 start_time = time()
-                t, s = BFS(puzzle).solve(False)
+                answer = BFS(puzzle).solve(False)
                 elapsed_time = time() - start_time
-                average_time[i] += elapsed_time
-                time_complex[i] += t
-                space_complex[i] += s
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
             elif option[i].upper() == "DFS":
                 start_time = time()
-                t, s = DFS(puzzle).solve(False)
+                answer = DFS(puzzle).solve(False)
                 elapsed_time = time() - start_time
-                average_time[i] += elapsed_time
-                time_complex[i] += t
-                space_complex[i] += s
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
+            elif option[i].upper().find("DLS") == 0:
+                new_option = option[i].upper().split("-")
+                limit = int(new_option[1])
+                start_time = time()
+                answer = DLS(puzzle, limit).solve(False)
+                elapsed_time = time() - start_time
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
             elif option[i].upper() == "IDS":
                 start_time = time()
-                t, s = IDS(puzzle).solve(False)
+                answer = IDS(puzzle).solve(False)
                 elapsed_time = time() - start_time
-                average_time[i] += elapsed_time
-                time_complex[i] += t
-                space_complex[i] += s
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
             elif option[i] == "A*(Misplaced)":
                 puzzle.setHeuristic("misplace")
                 start_time = time()
-                t, s = ASTAR(puzzle).solve(False)
+                answer = ASTAR(puzzle).solve(False)
                 elapsed_time = time() - start_time
-                average_time[i] += elapsed_time
-                time_complex[i] += t
-                space_complex[i] += s
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
             elif option[i] == "A*(Manhattan)":
                 puzzle.setHeuristic("manhattan")
                 start_time = time()
-                t, s = ASTAR(puzzle).solve(False)
+                answer = ASTAR(puzzle).solve(False)
                 elapsed_time = time() - start_time
-                average_time[i] += elapsed_time
-                time_complex[i] += t
-                space_complex[i] += s
+                av_time[i] += elapsed_time
+                time_complex[i] += answer[0] if answer is not None else 0
+                space_complex[i] += answer[1] if answer is not None else 0
+                num_of_solution_not_found[i] += 1 if answer is None else 0
 
-    d = pd.DataFrame({'Search': option, 'Expanded nodes': time_complex//tries,
-                      'Maximum length of the list': space_complex//tries, 'Average time(sec)': average_time/tries})
+    average_expanded_nodes = np.zeros(len(option))
+    average_length_nodes = np.zeros(len(option))
+    average_time = np.zeros(len(option))
+    for i in range(len(option)):
+        average_expanded_nodes[i] = "----" if num_of_solution_not_found[i] == tries \
+            else time_complex[i] // (tries - num_of_solution_not_found[i])
+        average_length_nodes[i] = "----" if num_of_solution_not_found[i] == tries \
+            else space_complex[i] // (tries - num_of_solution_not_found[i])
+        average_time[i] = "----" if num_of_solution_not_found[i] == tries \
+            else av_time[i] / tries
+
+    d1 = pd.DataFrame({'Search': option,
+                       'Expanded nodes': average_expanded_nodes,
+                       'Maximum length of the list': average_length_nodes})
+
+    d2 = pd.DataFrame({'Search': option,
+                       'Average time(sec)': average_time,
+                       'N°. Solution not found': num_of_solution_not_found})
+
     print("Number of tries: %d \n" % tries)
-    print(d)
+    print(d1, "\n")
+    print(d2)
