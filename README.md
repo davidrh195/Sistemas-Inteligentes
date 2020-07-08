@@ -13,4 +13,8 @@
         <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Prolog/hospital.pl">hospital.pl</a></td>
         <td><a HREF="https://github.com/pablomt/prolog-sistema-experto-salud">pablomt/prolog-sistema-experto-salud</a></td>
     </tr>
+    <tr>
+        <td>Árbol genealogico</td>
+        <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Prolog/familia.pl">familia.pl</a></td>
+    </tr>
 </table>
