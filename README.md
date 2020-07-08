@@ -1,4 +1,9 @@
 # Sistemas-Inteligentes
+
+|      Problem      | Languages |
+| :---------------- | :-------: |
+| **Picas y Fijas** | [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python) |
+
 [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python)
 
 [Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
