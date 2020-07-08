@@ -1,13 +1,17 @@
 # Sistemas-Inteligentes
 
-|      Problem      | Languages |
-| :---------------- | :-------: |
-| **Picas y Fijas** | [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python) |
+## Picas y Fijas
+* [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python)
+* [C++](https://github.com/davidrh195/Sistemas-Inteligentes/tree/C++)
 
-[Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python)
+## 8-Puzzle
+* [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python)
 
-[Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
+## Cuadrito
+* [Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
 
-[C++](https://github.com/davidrh195/Sistemas-Inteligentes/tree/C++)
+## Laberinto
+* [Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
 
-[Prolog](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Prolog)
+## Sistemas expertos
+* [Prolog](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Prolog)
