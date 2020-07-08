@@ -44,7 +44,7 @@ pip install -r requirements.txt
         <th>Elements</th>
     </tr>
     <tr>
-        <td rowspan="4"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Utils/Search.py">Search.py</a></td>
+        <td rowspan="5"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Utils/Search.py">Search.py</a></td>
         <td>BFS (Breadth First Search)</td>
     </tr>
     <tr>
@@ -58,5 +58,18 @@ pip install -r requirements.txt
     </tr>
     <tr>
         <td>A*</td>
+    </tr>
+    <tr>
+        <td rowspan="4"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Utils/Collections.py">Collections.py</a></td>
+        <td>Node</td>
+    </tr>
+    <tr>
+        <td>Queue</td>
+    </tr>
+    <tr>
+        <td>Stack</td>
+    </tr>
+    <tr>
+        <td>Priority Queue</td>
     </tr>
 </table>
