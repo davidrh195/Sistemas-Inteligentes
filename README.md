@@ -29,7 +29,7 @@ pip install -r requirements.txt
     </tr>
     <tr>
         <td rowspan="2">8-Puzzle</td>
-        <td>Puzzle</td>
+        <td>Board</td>
         <td ><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/Puzzle.py">Puzzle.py</a></td>
     </tr>
     <tr>
