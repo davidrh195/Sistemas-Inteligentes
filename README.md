@@ -16,5 +16,6 @@
     <tr>
         <td>Árbol genealogico</td>
         <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Prolog/familia.pl">familia.pl</a></td>
+        <td>--------</td>
     </tr>
 </table>
