@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/matematiko.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/speco.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kitee.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/fwew.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hazarda.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aplikigo.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
