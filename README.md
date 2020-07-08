@@ -16,12 +16,9 @@ pip install -r requirements.txt
         <th>Files</th>
     </tr>
     <tr>
-        <td>Picas y Fijas</td>
-        <td>
-            <td>Agent</td>
-            <td>Environment</td>
-        </td>
-        <td>asas </td>
+        <td rowspan="2">Picas y Fijas</td>
+        <td>Agent</td>
+        <td>[PyF.py](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py)</td>
     </tr>
     <tr>
         <td>Key 2</td>
