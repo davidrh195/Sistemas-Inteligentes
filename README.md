@@ -16,15 +16,20 @@ pip install -r requirements.txt
         <th>Files</th>
     </tr>
     <tr>
-        <td rowspan="2">Picas y Fijas</td>
+        <td rowspan="3">Picas y Fijas</td>
         <td>Agent</td>
         <td rowspan="2"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py">PyF.py</a></td>
     </tr>
     <tr>
         <td>Environment</td>
     </tr>
+    <tr>
+        <td>Main</td>
+        <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Picas-y-Fijas.py">Picas-y-Fijas.py</a></td>
+    </tr>
+    <tr>
+        <td rowspan="2">8-Puzzle</td>
+        <td>Puzzle</td>
+        <td rowspan="2"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py">PyF.py</a></td>
+    </tr>
 </table>
-
-|    Problems   | Elements | Files |
-| ------------- | -- | ----- |
-| Picas y Fijas | <table><tr>Agent<tr><tr>Environment</tr></table> | aslaks |
