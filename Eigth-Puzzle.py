@@ -12,7 +12,7 @@ print(colored("* If pass more than 1 search, will apply all and returns", "blue"
 print(colored("  a comparison between them", "blue"))
 option = sys.stdin.readline().strip().split(" ")
 puzzle = EightPuzzle()
-# puzzle = EightPuzzle((0, 1, 2, 3, 4, 5, 6, 7, 8))
+#puzzle = EightPuzzle((0, 1, 2, 3, 4, 5, 6, 7, 8))
 
 if len(option) == 1:
     puzzle.scramble(14)
