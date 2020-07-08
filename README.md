@@ -26,7 +26,6 @@ pip install -r requirements.txt
     </tr>
 </table>
 
-|    Problems   | Files |
-| ------------- | ----- |
-| Picas y Fijas | <ul><li>[Agent, Environment](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py)</li><li>[Main](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Picas-y-Fijas.py)</li></ul> |
-| 8-Puzzle | <ul><li>[Puzzle](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/Puzzle.py)</li><li>[Main](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Eigth-Puzzle.py)</li></ul> |
+|    Problems   | Elements | Files |
+| ------------- | -- | ----- |
+| Picas y Fijas | <table><tr>Agent<tr><tr>Environment</tr></table> | aslaks |
