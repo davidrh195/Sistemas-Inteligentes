@@ -30,7 +30,7 @@ pip install -r requirements.txt
     <tr>
         <td rowspan="2">8-Puzzle</td>
         <td>Puzzle</td>
-        <td ><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/Puzzle.py">PyF.py</a></td>
+        <td ><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/Puzzle.py">Puzzle.py</a></td>
     </tr>
     <tr>
         <td>Main</td>
