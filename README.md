@@ -1,4 +1,4 @@
-# Sistemas-Inteligentes
+# Sistemas Inteligentes
 
 ## Picas y Fijas
 * [Python](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Python)
