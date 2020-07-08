@@ -10,8 +10,5 @@
 ## Cuadrito
 * [Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
 
-## Laberinto
-* [Java](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Java)
-
 ## Sistemas expertos
 * [Prolog](https://github.com/davidrh195/Sistemas-Inteligentes/tree/Prolog)
