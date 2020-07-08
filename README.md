@@ -10,14 +10,23 @@ pip install -r requirements.txt
 ```
 
 <table>
-<tr>
-    <td>Key 1</td>
-    <td>Value 1</td>
-</tr>
-<tr>
-    <td>Key 2</td>
-    <td>Value 2</td>
-</tr>
+    <tr>
+        <th>Problems</th>
+        <th>Elements</th>
+        <th>Files</th>
+    </tr>
+    <tr>
+        <td>Picas y Fijas</td>
+        <td>
+            <td>Agent</td>
+            <td>Environment</td>
+        </td>
+        <td>asas </td>
+    </tr>
+    <tr>
+        <td>Key 2</td>
+        <td>Value 2</td>
+    </tr>
 </table>
 
 |    Problems   | Files |
