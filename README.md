@@ -37,3 +37,26 @@ pip install -r requirements.txt
         <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Eigth-Puzzle.py">Eigth-Puzzle.py</a></td>
     </tr>
 </table>
+
+<table>
+    <tr>
+        <th>Files</th>
+        <th>Elements</th>
+    </tr>
+    <tr>
+        <td rowspan="4"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Utils/Search.py">Search.py</a></td>
+        <td>BFS (Breadth First Search)</td>
+    </tr>
+    <tr>
+        <td>DFS (Depth First Search)</td>
+    </tr>
+    <tr>
+        <td>DLS (Depth Limited Search)</td>
+    </tr>
+    <tr>
+        <td>IDS (Iterative Deepening Search)</td>
+    </tr>
+    <tr>
+        <td>A*</td>
+    </tr>
+</table>
