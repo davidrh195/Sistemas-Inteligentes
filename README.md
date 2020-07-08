@@ -34,6 +34,6 @@ pip install -r requirements.txt
     </tr>
     <tr>
         <td>Main</td>
-        <td><a HREF"https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Eigth-Puzzle.py">Eigth-Puzzle.py</a></td>
+        <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Eigth-Puzzle.py">Eigth-Puzzle.py</a></td>
     </tr>
 </table>
