@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>Diagnostico de enfermedades</td>
-        <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Java/src/nsgl/agents/examples/games/squares/Cuadrito.java">Cuadrito.java</a></td>
-        <td>[pablomt/prolog-sistema-experto-salud](pablomt/prolog-sistema-experto-salud)</td>
+        <td><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Prolog/hospital.pl">hospital.pl</a></td>
+        <td><a HREF="https://github.com/pablomt/prolog-sistema-experto-salud">pablomt/prolog-sistema-experto-salud</a></td>
     </tr>
 </table>
