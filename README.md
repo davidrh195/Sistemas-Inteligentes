@@ -2,6 +2,10 @@
 
 # Sistemas inteligentes Java
 
+[Repositorio original](https://github.com/jgomezpe/uniltiranyu)
+
+---
+
 <table>
     <tr>
         <th>Agent</th>
