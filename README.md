@@ -1,6 +1,6 @@
-```
+
 [Back](https://github.com/davidrh195/Sistemas-Inteligentes/tree/master)
-```
+
 # Sistemas Inteligentes Python 3.8
 
 Install the basic dependencies to run the project on your system:
