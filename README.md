@@ -2,7 +2,7 @@
 
 # Sistemas inteligentes Java
 
-[Repositorio fuente](https://github.com/jgomezpe/uniltiranyu)
+forked from [https://github.com/jgomezpe/uniltiranyu](https://github.com/jgomezpe/uniltiranyu)
 
 ---
 
