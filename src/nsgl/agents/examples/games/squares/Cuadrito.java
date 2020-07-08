@@ -14,6 +14,7 @@ import java.util.*;
 public class Cuadrito implements AgentProgram {
     protected String color;
     protected HashMap<Integer, ArrayList<String>> Memory = new HashMap<>();
+
     public Cuadrito( String color ){
         this.color = color;
     }
