@@ -18,11 +18,10 @@ pip install -r requirements.txt
     <tr>
         <td rowspan="2">Picas y Fijas</td>
         <td>Agent</td>
-        <td>[PyF.py](https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py)</td>
+        <td rowspan="2"><a HREF="https://github.com/davidrh195/Sistemas-Inteligentes/blob/Python/Problems/PyF.py">PyF.py</a></td>
     </tr>
     <tr>
-        <td>Key 2</td>
-        <td>Value 2</td>
+        <td>Environment</td>
     </tr>
 </table>
 
