@@ -2,7 +2,7 @@
 
 # Sistemas inteligentes Java
 
-forked from [https://github.com/jgomezpe/uniltiranyu](https://github.com/jgomezpe/uniltiranyu)
+forked from [jgomezpe/uniltiranyu](https://github.com/jgomezpe/uniltiranyu)
 
 ---
 
