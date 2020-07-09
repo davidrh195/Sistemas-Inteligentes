@@ -33,7 +33,7 @@ public class SquaresMain  {
     agentAd[6] = new Agent( new YeisonAgent(Squares.BLACK));
     agentAd[7] = new Agent( new SquareHardAgentProgram(Squares.BLACK));
 */    
-    Agent w_agent =  new Agent( new DummySquaresAgentProgram(Squares.WHITE));
+    Agent w_agent =  new Agent( new Cuadrito2(Squares.WHITE));
     Agent b_agent =  new Agent( new Cuadrito(Squares.BLACK));
     SquaresMainFrame frame = new SquaresMainFrame( w_agent, b_agent );
     frame.setVisible(true);
